@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "taskjira"
+version = "0.1.0"
+description = "Scripts to sync JIRA and taskwarrior"
+authors = ["Chris Seal <c.seal@auckland.ac.nz>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+passpy = "^1.0.2"
+jira = "^3.6.0"
+toml = "^0.10.2"
+bugwarrior = "^1.8.0"
+types-passpy = "^1.0.2.4"
+taskw = "^2.0.0"
+pydantic-settings = "^2.1.0"
+pydantic = {extras = ["email"], version = "^2.1.0"}
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.4"
+pylint = "^3.0.3"
+flake8 = "^7.0.0"
+mypy = "^1.8.0"
+black = "^23.12.1"
+pytest-black = "^0.3.12"
+isort = "^5.13.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
