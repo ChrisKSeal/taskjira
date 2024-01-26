@@ -25,3 +25,11 @@ class JiraConfig(TaskJiraSettings):
     JIRA_HOST: AnyUrl
     API_PASS_KEY: str
     JIRA_USER: Optional[str] = None
+
+
+class TaskWarriorConfig(TaskJiraSettings):
+    TASKRC_FILEPATH: str = "~/.taskrc"
+
+
+class IntergratorConfig(TaskJiraSettings):
+    PROJECT_ABBREVIATION: str

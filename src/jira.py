@@ -28,7 +28,7 @@ class TJJira:
         """Initialisation script
 
         Args:
-            jira_config (JiraConfig): A config class containg the connection details to JIRA
+            jira_config (JiraConfig): A config class containing the connection details to JIRA
         """
         if password := get_password_from_store(
             store=store, pass_key=jira_config.API_PASS_KEY
@@ -112,6 +112,7 @@ class TJJira:
             try:
                 return_list.append(
                     (
+                        'inward',
                         link.type.inward,
                         link.inwardIssue.key,
                     )
@@ -119,6 +120,7 @@ class TJJira:
             except AttributeError:
                 return_list.append(
                     (
+                        'outward',
                         link.type.outward,
                         link.outwardIssue.key,
                     )

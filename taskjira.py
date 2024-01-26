@@ -4,15 +4,17 @@ Run script to synchronise JIRA and taskwarrior"""
 
 from passpy import Store
 
-from src.config import JiraConfig, PassPyConfig
+from src.config import JiraConfig, PassPyConfig, TaskWarriorConfig
 from src.jira import TJJira
+from src.taskwarrior import TJTaskWarrior
 
 jira_config = JiraConfig()
 passpy_config = PassPyConfig()
+taskwarrior_config = TaskWarriorConfig()
 
 store = Store(gpg_bin=passpy_config.GPG_BIN)
 
-taskjira = TJJira(jira_config, store)
+taskjira_j = TJJira(jira_config, store)
 
 """print(taskjira.jira.boards(name="Core MyTardis"))
 print(taskjira.jira.sprints(50))
@@ -20,13 +22,16 @@ print(taskjira.jira.sprint(2747))
 print(dir(taskjira.jira.sprint(2747)))"""
 
 # active_issues = taskjira.get_active_issues()
-active_epics = taskjira.create_issue_dataclasses(taskjira.get_active_epics())
+"""active_epics = taskjira.create_issue_dataclasses(taskjira.get_active_epics())
 active_stories = taskjira.create_issue_dataclasses(taskjira.get_active_stories())
 active_tasks = taskjira.create_issue_dataclasses(taskjira.get_active_issues())
 
 print(active_epics)
 print(active_stories)
-print(active_tasks)
+print(active_tasks)"""
+
+taskjira_tw = TJTaskWarrior(taskwarrior_config)
+print(taskjira_tw.get_active_tasks())
 
 """for issue in active_issues:
     print(issue)
